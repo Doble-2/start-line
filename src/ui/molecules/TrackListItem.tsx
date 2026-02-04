@@ -1,10 +1,11 @@
-import { View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import { Pressable, View } from "react-native";
 
 import type { Track } from "@/src/data/models";
 import { theme } from "@/src/theme";
 import { AppText } from "@/src/ui/atoms/AppText";
 import { Card } from "@/src/ui/atoms/Card";
-import { IconButton } from "@/src/ui/atoms/IconButton";
 
 type Props = {
   track: Track;
@@ -34,7 +35,30 @@ export function TrackListItem({ track, onPlay }: Props) {
             {track.album}
           </AppText>
         </View>
-        <IconButton icon="play" onPress={onPlay} />
+        <Pressable
+          onPress={onPlay}
+          style={({ pressed }) => [
+            {
+              width: 50,
+              height: 50,
+              borderRadius: theme.radius.pill,
+              overflow: "hidden",
+              borderWidth: 1,
+              borderColor: "rgba(255,255,255,0.16)",
+              opacity: pressed ? 0.96 : 1,
+              transform: [{ scale: pressed ? 0.98 : 1 }],
+            },
+          ]}
+        >
+          <LinearGradient
+            colors={theme.gradients.actionAlt as any}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          >
+            <Ionicons name="play" size={22} color={theme.palette.white} />
+          </LinearGradient>
+        </Pressable>
       </View>
     </Card>
   );

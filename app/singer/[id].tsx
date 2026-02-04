@@ -1,6 +1,7 @@
 import { router, useLocalSearchParams } from "expo-router";
 import { useMemo } from "react";
 import { FlatList, View } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 import { getSingerById, getTracksBySingerId } from "@/src/data";
 import { usePlayer } from "@/src/player";
@@ -88,13 +89,19 @@ export default function SingerScreen() {
           paddingBottom: theme.spacing.xxl,
         }}
         renderItem={({ item, index }) => (
-          <TrackListItem
-            track={item}
-            onPlay={async () => {
-              await player.playQueue(singerTracks, index);
-              router.push("/player");
-            }}
-          />
+          <Animated.View
+            entering={FadeInDown.delay(Math.min(index * 30, 180))
+              .duration(260)
+              .springify()}
+          >
+            <TrackListItem
+              track={item}
+              onPlay={async () => {
+                await player.playQueue(singerTracks, index);
+                router.push("/player");
+              }}
+            />
+          </Animated.View>
         )}
       />
     </Screen>

@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import { View } from "react-native";
 
 import type { Singer } from "@/src/data/models";
@@ -22,19 +23,24 @@ export function SingerListItem({ singer, onPress }: Props) {
     >
       <View
         style={{
-          width: 54,
-          height: 54,
-          borderRadius: theme.radius.lg,
-          backgroundColor: theme.palette.surface2,
+          width: 56,
+          height: 56,
+          borderRadius: theme.radius.xl,
+          overflow: "hidden",
           borderWidth: 1,
-          borderColor: theme.palette.border,
-          alignItems: "center",
-          justifyContent: "center",
+          borderColor: "rgba(255,255,255,0.14)",
         }}
       >
-        <AppText variant="headline" style={{ fontSize: 18 }}>
-          {singer.name.slice(0, 1).toUpperCase()}
-        </AppText>
+        <LinearGradient
+          colors={theme.gradients.action as any}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <AppText variant="headline" style={{ fontSize: 18 }}>
+            {singer.name.slice(0, 1).toUpperCase()}
+          </AppText>
+        </LinearGradient>
       </View>
       <View style={{ flex: 1 }}>
         <AppText variant="headline" style={{ fontSize: 18 }}>

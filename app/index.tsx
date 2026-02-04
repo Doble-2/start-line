@@ -1,5 +1,6 @@
 import { router } from "expo-router";
 import { FlatList, View } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 import { singers } from "@/src/data";
 import { theme } from "@/src/theme";
@@ -10,11 +11,11 @@ export default function SingersScreen() {
   return (
     <Screen contentStyle={{ paddingTop: theme.spacing.xxl }}>
       <View style={{ marginBottom: theme.spacing.lg }}>
-        <AppText variant="title" color={theme.palette.vino2}>
+        <AppText variant="title" color={theme.palette.pink}>
           Cantantes
         </AppText>
         <AppText variant="caption" color={theme.palette.textSecondary}>
-          Elige uno para ver sus canciones recientes.
+          Elige tu favorito y pon música en un toque.
         </AppText>
       </View>
 
@@ -26,10 +27,12 @@ export default function SingersScreen() {
           paddingBottom: theme.spacing.xxl,
         }}
         renderItem={({ item }) => (
-          <SingerListItem
-            singer={item}
-            onPress={() => router.push(`/singer/${item.id}`)}
-          />
+          <Animated.View entering={FadeInDown.duration(260).springify()}>
+            <SingerListItem
+              singer={item}
+              onPress={() => router.push(`/singer/${item.id}`)}
+            />
+          </Animated.View>
         )}
       />
     </Screen>

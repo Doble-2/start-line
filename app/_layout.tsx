@@ -2,6 +2,7 @@ import { DarkTheme, ThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
+import { Platform } from "react-native";
 
 import { PlayerProvider } from "@/src/player";
 
@@ -12,12 +13,23 @@ export default function RootLayout() {
         <Stack
           screenOptions={{
             headerShown: false,
-            animation: "slide_from_right",
+            animation: Platform.select({
+              ios: "default",
+              android: "slide_from_right",
+              default: "fade",
+            }),
+            animationDuration: 280,
           }}
         >
           <Stack.Screen name="index" />
           <Stack.Screen name="singer/[id]" />
-          <Stack.Screen name="player" />
+          <Stack.Screen
+            name="player"
+            options={{
+              presentation: "modal",
+              animation: "fade_from_bottom",
+            }}
+          />
         </Stack>
         <StatusBar style="light" />
       </PlayerProvider>

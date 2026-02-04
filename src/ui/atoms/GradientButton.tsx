@@ -1,6 +1,6 @@
 import * as Haptics from "expo-haptics";
 import { LinearGradient } from "expo-linear-gradient";
-import { Pressable, StyleProp, ViewStyle } from "react-native";
+import { Platform, Pressable, StyleProp, ViewStyle } from "react-native";
 
 import { theme } from "@/src/theme";
 import { AppText } from "./AppText";
@@ -34,8 +34,15 @@ export function GradientButton({
         {
           borderRadius: theme.radius.xl,
           overflow: "hidden",
-          opacity: disabled ? 0.5 : pressed ? 0.92 : 1,
+          opacity: disabled ? 0.5 : pressed ? 0.96 : 1,
+          transform: [{ scale: pressed ? 0.985 : 1 }],
+          shadowColor: "#000",
+          shadowOpacity: 0.28,
+          shadowRadius: 16,
+          shadowOffset: { width: 0, height: 10 },
+          elevation: 8,
         },
+        Platform.OS === "web" ? ({ cursor: "pointer" } as any) : null,
         style,
       ]}
     >

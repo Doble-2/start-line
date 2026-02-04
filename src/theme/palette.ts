@@ -5,6 +5,7 @@ export const palette = {
   surface0: '#07070B',
   surface1: '#0E0E14',
   surface2: '#14141D',
+  surface3: '#1B1B27',
 
   textPrimary: 'rgba(255,255,255,0.92)',
   textSecondary: 'rgba(255,255,255,0.70)',
@@ -17,6 +18,13 @@ export const palette = {
   purple: '#6D28D9',
   purple2: '#8B5CF6',
   magenta: '#B5179E',
+
+  // Accent colors (más “friendly”)
+  pink: '#FF4FD8',
+  coral: '#FF5D6C',
+  sky: '#38BDF8',
+  mint: '#34D399',
+  lemon: '#FDE047',
 
   success: '#22C55E',
   danger: '#EF4444',

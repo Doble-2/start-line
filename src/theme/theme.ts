@@ -9,8 +9,9 @@ export const theme = {
   spacing,
   typography,
   gradients: {
-    action: [palette.vino, palette.purple] as const,
-    actionAlt: [palette.vino2, palette.magenta] as const,
+    action: [palette.pink, palette.purple2] as const,
+    actionAlt: [palette.sky, palette.mint] as const,
+    warm: [palette.coral, palette.lemon] as const,
   },
 } as const;
 

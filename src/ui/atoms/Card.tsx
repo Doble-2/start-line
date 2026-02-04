@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, StyleProp, View, ViewStyle } from "react-native";
+import { Platform, Pressable, StyleProp, View, ViewStyle } from "react-native";
 
 import { theme } from "@/src/theme";
 
@@ -16,6 +16,11 @@ export function Card({ children, onPress, style }: Props) {
     borderWidth: 1,
     borderColor: theme.palette.border,
     padding: theme.spacing.lg,
+    shadowColor: "#000",
+    shadowOpacity: 0.25,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 6,
   };
 
   if (onPress) {
@@ -24,7 +29,13 @@ export function Card({ children, onPress, style }: Props) {
         onPress={onPress}
         style={({ pressed }: { pressed: boolean }) => [
           baseStyle,
-          { opacity: pressed ? 0.92 : 1 },
+          {
+            opacity: pressed ? 0.96 : 1,
+            transform: [{ scale: pressed ? 0.985 : 1 }],
+          },
+          Platform.OS === "web"
+            ? ({ cursor: "pointer" } as any)
+            : null,
           style,
         ]}
       >

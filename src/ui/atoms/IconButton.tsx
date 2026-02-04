@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { Pressable, StyleProp, ViewStyle } from "react-native";
+import { Platform, Pressable, StyleProp, ViewStyle } from "react-native";
 
 import { theme } from "@/src/theme";
 
@@ -33,8 +33,10 @@ export function IconButton({
           backgroundColor: theme.palette.surface2,
           borderWidth: 1,
           borderColor: theme.palette.border,
-          opacity: disabled ? 0.5 : pressed ? 0.9 : 1,
+          opacity: disabled ? 0.5 : pressed ? 0.95 : 1,
+          transform: [{ scale: pressed ? 0.96 : 1 }],
         },
+        Platform.OS === "web" ? ({ cursor: "pointer" } as any) : null,
         style,
       ]}
     >
