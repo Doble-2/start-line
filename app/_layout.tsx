@@ -1,8 +1,8 @@
 import { DarkTheme, ThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import "react-native-reanimated";
 import { Platform } from "react-native";
+import "react-native-reanimated";
 
 import { PlayerProvider } from "@/src/player";
 

@@ -33,9 +33,7 @@ export function Card({ children, onPress, style }: Props) {
             opacity: pressed ? 0.96 : 1,
             transform: [{ scale: pressed ? 0.985 : 1 }],
           },
-          Platform.OS === "web"
-            ? ({ cursor: "pointer" } as any)
-            : null,
+          Platform.OS === "web" ? ({ cursor: "pointer" } as any) : null,
           style,
         ]}
       >

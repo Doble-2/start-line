@@ -21,7 +21,9 @@ export function Screen({ children, style, contentStyle }: Props) {
   const isWeb = Platform.OS === "web";
 
   const deviceWidth = Math.min(430, Math.max(320, width - 32));
-  const deviceHeight = isWeb ? Math.max(720, Math.min(920, height - 32)) : undefined;
+  const deviceHeight = isWeb
+    ? Math.max(720, Math.min(920, height - 32))
+    : undefined;
 
   return (
     <View
