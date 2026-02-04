@@ -25,6 +25,52 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
+## Deploy web (Vercel)
+
+This project is configured to export a static web build to `dist/`.
+
+### Local build
+
+```bash
+npm run build
+```
+
+### Deploy
+
+1. Push your repo to GitHub/GitLab/Bitbucket.
+2. Import it in Vercel.
+3. In Vercel project settings:
+   - Build Command: `npm run build` (or `npm run vercel-build`)
+   - Output Directory: `dist`
+
+`vercel.json` includes a rewrite to `index.html` so Expo Router routes work on refresh/deep links.
+
+## Android APK / AAB (EAS)
+
+This project includes an `eas.json` with profiles for APK (preview) and AAB (production).
+
+### One-time setup
+
+```bash
+npm i -g eas-cli
+eas login
+eas build:configure
+```
+
+On first build, EAS may ask you to set an Android package (Application ID). Pick something like `com.tuempresa.startline`.
+
+### Build APK (installable)
+
+```bash
+npm run build:apk
+```
+
+### Build AAB (Play Store)
+
+```bash
+npm run build:aab
+```
+
 ## Get a fresh project
 
 When you're ready, run:
